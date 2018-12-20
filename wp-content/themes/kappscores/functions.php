@@ -73,9 +73,11 @@ if ( ! function_exists( 'kappscores_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
+
+        //Add theme support for Custom Logo
 		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 90,
+			'width'       => 90,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
@@ -104,7 +106,7 @@ function kappscores_fonts_url() {
         $font_families[] = 'PT Serif: 400, 400i, 700, 700i';
     }
 
-    if ( in_array('on', array($source_sans_pro, $pt_serif)) ) {
+    if ( in_array('on', array($source_sans_pro, $pt_serif))) {
 
         $query_args = array(
             'family' => urlencode( implode( '|', $font_families ) ),

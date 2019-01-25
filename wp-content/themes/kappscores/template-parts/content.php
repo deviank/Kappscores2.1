@@ -25,8 +25,8 @@
 			?>
 			<div class="entry-meta">
 				<?php
+                kappscores_posted_by();
 				kappscores_posted_on();
-				kappscores_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>

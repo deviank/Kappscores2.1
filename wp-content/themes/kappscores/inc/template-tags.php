@@ -49,7 +49,7 @@ if ( ! function_exists( 'kappscores_posted_on' ) ) :
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 
         if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-            echo '<span class="comments-link">';
+            echo ' <span class="comments-link">';
             comments_popup_link(
                 sprintf(
                     wp_kses(
@@ -66,6 +66,23 @@ if ( ! function_exists( 'kappscores_posted_on' ) ) :
             );
             echo '</span>';
         }
+
+        edit_post_link(
+            sprintf(
+                wp_kses(
+                /* translators: %s: Name of current post. Only visible to screen readers */
+                    __( 'Edit <span class="screen-reader-text">%s</span>', 'kappscores' ),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                get_the_title()
+            ),
+            ' <span class="edit-link">',
+            '</span>'
+        );
 
 	}
 endif;
@@ -87,25 +104,6 @@ if ( ! function_exists( 'kappscores_entry_footer' ) ) :
 				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'kappscores' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
-
-
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'kappscores' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 

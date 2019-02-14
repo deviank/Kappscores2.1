@@ -185,7 +185,10 @@ function kappscores_scripts() {
 
 	wp_enqueue_script( 'kappscores-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
 
-	wp_localize_script('kappscores-navigation', 'kappscoresScreenReaderText', array(
+    wp_enqueue_script( 'kappscores-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20190211', true );
+
+
+    wp_localize_script('kappscores-navigation', 'kappscoresScreenReaderText', array(
 	    'expand' => __('Expand child menu', 'kappscores'),
         'collapse' => __('Collapse child menu', 'kappscores'),
     ));

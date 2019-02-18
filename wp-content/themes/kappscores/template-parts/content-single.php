@@ -27,7 +27,17 @@
         endif; ?>
     </header><!-- .entry-header -->
 
-    <section class="post-content">
+    <?php
+    if ( has_post_thumbnail() ) { ?>
+        <figure class="featured-image full-bleed">
+            <?php
+            the_post_thumbnail('kappscores-full-bleed');
+            ?>
+        </figure><!-- .featured-image full-bleed -->
+    <?php } ?>
+
+        <section class="post-content">
+
 
         <?php
         if ( !is_active_sidebar( 'sidebar-1' ) ) : ?>

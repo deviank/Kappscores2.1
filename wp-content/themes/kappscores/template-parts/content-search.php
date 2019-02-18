@@ -17,13 +17,13 @@
 		<div class="entry-meta">
 			<?php
 			kappscores_posted_on();
-			kappscores_posted_by();
+			//kappscores_posted_by();
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php kappscores_post_thumbnail(); ?>
+	<?php //kappscores_post_thumbnail(); ?>
 
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>

@@ -143,3 +143,21 @@ function kappscores_post_navigation() {
             '<span class="post-title">%title</span>',
     ) );
 }
+
+/**
+ * Customize ellipsis at the end of the excerpts.
+ */
+
+function kappscores_excerpt_more($more){
+    return "...";
+}
+add_filter('excerpt_more', 'kappscores_excerpt_more');
+
+/**
+ * Filter excerpt length to 100 words
+ */
+
+function kappscores_excerpt_lenght($length){
+    return 100;
+}
+add_filter('excerpt_length', 'kappscores_excerpt_lenght');

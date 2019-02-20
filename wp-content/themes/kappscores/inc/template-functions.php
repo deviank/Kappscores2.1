@@ -30,6 +30,14 @@ function kappscores_body_classes( $classes ) {
         $classes[] = 'no-sidebar';
     }
 
+    //Add a class telling us if the page sidebar is in use
+    if(is_active_sidebar('sidebar-2')){
+        $classes[] = 'has-page-sidebar';
+    } else {
+        $classes[] = 'no-page-sidebar';
+    }
+
+
 	return $classes;
 }
 add_filter( 'body_class', 'kappscores_body_classes' );

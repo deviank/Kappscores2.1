@@ -81,7 +81,7 @@
 
 .byline,
 .updated:not(.published){
-	display: none;
+	display: initial;
 }
 
 .single .byline,

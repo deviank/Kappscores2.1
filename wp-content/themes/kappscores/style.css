@@ -999,8 +999,10 @@ a:hover, a:active {
 	margin: 0 auto;
 }
 
+/* Single posts */
 @media screen and (min-width: 900px) {
-	.has-sidebar .hentry {
+	.single.has-sidebar .hentry,
+	.page .hentry {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
@@ -1010,22 +1012,36 @@ a:hover, a:active {
 		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 	}
-	.has-sidebar .hentry .entry-header {
+	.single.has-sidebar .hentry .entry-header,
+	.page .hentry .entry-header {
 		width: 100%;
 		-webkit-box-flex: 1;
 		    -ms-flex: 1 0 100%;
 		        flex: 1 0 100%;
 	}
-	.has-sidebar .hentry .post-content {
+	.single.has-sidebar .hentry .post-content,
+	.page .hentry .post-content {
 		width: 60%;
 	}
-	.has-sidebar .hentry .widget-area {
+	.single.has-sidebar .hentry .widget-area,
+	.page .hentry .widget-area {
 		width: 30%;
+	}
+	.page.has-page-sidebar .hentry {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: reverse;
+		    -ms-flex-direction: row-reverse;
+		        flex-direction: row-reverse;
+	}
+	.page:not(.has-page-sidebar) .hentry {
+		-webkit-box-pack: end;
+		    -ms-flex-pack: end;
+		        justify-content: flex-end;
 	}
 }
 
 @media screen and (min-width: 900px) {
-	.no-sidebar .post-content__wrap {
+	.single.no-sidebar .post-content__wrap {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
@@ -1033,10 +1049,10 @@ a:hover, a:active {
 		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 	}
-	.no-sidebar .post-content__wrap .entry-meta {
+	.single.no-sidebar .post-content__wrap .entry-meta {
 		width: 20%;
 	}
-	.no-sidebar .post-content__wrap .post-content__body {
+	.single.no-sidebar .post-content__wrap .post-content__body {
 		width: 70%;
 	}
 }
@@ -1048,7 +1064,8 @@ a:hover, a:active {
 	background-color: #eee;
 }
 
-.archive-view .post {
+.archive-view .post,
+.archive-view .page {
 	position: relative;
 	background: white;
 }
@@ -1476,7 +1493,7 @@ ul.children.toggled-on,
 
 .byline,
 .updated:not(.published) {
-	display: none;
+	display: initial;
 }
 
 .single .byline,

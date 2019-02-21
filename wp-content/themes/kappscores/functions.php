@@ -1,97 +1,92 @@
 <?php
 /**
- * Kappscores functions and definitions
+ * kappscores functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Kappscores
+ * @package kappscores
  */
 
 if ( ! function_exists( 'kappscores_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	function kappscores_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Kappscores, use a find and replace
-		 * to change 'kappscores' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'kappscores', get_template_directory() . '/languages' );
+    /**
+     * Sets up theme defaults and registers support for various WordPress features.
+     *
+     * Note that this function is hooked into the after_setup_theme hook, which
+     * runs before the init hook. The init hook is too late for some features, such
+     * as indicating support for post thumbnails.
+     */
+    function kappscores_setup() {
+        /*
+         * Make theme available for translation.
+         * Translations can be filed in the /languages/ directory.
+         * If you're building a theme based on kappscores, use a find and replace
+         * to change 'kappscores' to the name of your theme in all the template files.
+         */
+        load_theme_textdomain( 'kappscores', get_template_directory() . '/languages' );
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+        // Add default posts and comments RSS feed links to head.
+        add_theme_support( 'automatic-feed-links' );
 
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+        /*
+         * Let WordPress manage the document title.
+         * By adding theme support, we declare that this theme does not use a
+         * hard-coded <title> tag in the document head, and expect WordPress to
+         * provide it for us.
+         */
+        add_theme_support( 'title-tag' );
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
-		add_image_size('kappscores-full-bleed', 2000,1200, true);
-		add_image_size('kappscores-index-img', 800, 450, true);
+        /*
+         * Enable support for Post Thumbnails on posts and pages.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support( 'post-thumbnails' );
+        add_image_size( 'kappscores-full-bleed', 2000, 1200, true );
+        add_image_size( 'kappscores-index-img', 1000, 550, true );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary' => esc_html__( 'Header', 'kappscores' ),
-            'social' => esc_html__('Social Media Menu', 'kappscores'),
-		) );
+        // This theme uses wp_nav_menu() in one location.
+        register_nav_menus( array(
+            'primary' => esc_html__( 'Header', 'kappscores' ),
+            'social' => esc_html__( 'Social Media Menu', 'kappscores' ),
+        ) );
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		) );
+        /*
+         * Switch default core markup for search form, comment form, and comments
+         * to output valid HTML5.
+         */
+        add_theme_support( 'html5', array(
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+        ) );
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'kappscores_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+        // Set up the WordPress core custom background feature.
+        add_theme_support( 'custom-background', apply_filters( 'kappscores_custom_background_args', array(
+            'default-color' => 'ffffff',
+            'default-image' => '',
+        ) ) );
 
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+        // Add theme support for Custom Logo
+        add_theme_support( 'custom-logo', array(
+            'width' => 90,
+            'height' => 90,
+            'flex-width' => true,
+        ));
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-
-        //Add theme support for Custom Logo
-		add_theme_support( 'custom-logo', array(
-			'height'      => 90,
-			'width'       => 90,
-			'flex-width'  => true,
-			//'flex-height' => true,
-		) );
-	}
+    }
 endif;
 add_action( 'after_setup_theme', 'kappscores_setup' );
 
+
+/**
+ * Register custom fonts.
+ */
 function kappscores_fonts_url() {
     $fonts_url = '';
 
-    /*
+    /**
      * Translators: If there are characters in your language that are not
      * supported by Source Sans Pro and PT Serif, translate this to 'off'. Do not translate
      * into your own language.
@@ -102,14 +97,15 @@ function kappscores_fonts_url() {
     $font_families = array();
 
     if ( 'off' !== $source_sans_pro ) {
-        $font_families[] = 'Source Sans Pro: 400, 400i, 700, 900';
+        $font_families[] = 'Source Sans Pro:400,400i,700,900';
     }
 
     if ( 'off' !== $pt_serif ) {
-        $font_families[] = 'PT Serif: 400, 400i, 700, 700i';
+        $font_families[] = 'PT Serif:400,400i,700,700i';
     }
 
-    if ( in_array('on', array($source_sans_pro, $pt_serif))) {
+
+    if ( in_array( 'on', array($source_sans_pro, $pt_serif) ) ) {
 
         $query_args = array(
             'family' => urlencode( implode( '|', $font_families ) ),
@@ -151,12 +147,84 @@ add_filter( 'wp_resource_hints', 'kappscores_resource_hints', 10, 2 );
  * @global int $content_width
  */
 function kappscores_content_width() {
-	// This variable is intended to be overruled from themes.
-	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'kappscores_content_width', 640 );
+    $GLOBALS['content_width'] = apply_filters( 'kappscores_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'kappscores_content_width', 0 );
+
+
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for content images.
+ *
+ * @origin Twenty Seventeen 1.0
+ *
+ * @param string $sizes A source size value for use in a 'sizes' attribute.
+ * @param array  $size  Image size. Accepts an array of width and height
+ *                      values in pixels (in that order).
+ * @return string A source size value for use in a content image 'sizes' attribute.
+ */
+function kappscores_content_image_sizes_attr( $sizes, $size ) {
+    $width = $size[0];
+
+    if ( 900 <= $width ) {
+        $sizes = '(min-width: 900px) 700px, 900px';
+    }
+
+    if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) {
+        $sizes = '(min-width: 900px) 600px, 900px';
+    }
+
+    return $sizes;
+}
+add_filter( 'wp_calculate_image_sizes', 'kappscores_content_image_sizes_attr', 10, 2 );
+
+/**
+ * Filter the `sizes` value in the header image markup.
+ *
+ * @origin Twenty Seventeen 1.0
+ *
+ * @param string $html   The HTML image tag markup being filtered.
+ * @param object $header The custom header object returned by 'get_custom_header()'.
+ * @param array  $attr   Array of the attributes for the image tag.
+ * @return string The filtered header image HTML.
+ */
+function kappscores_header_image_tag( $html, $header, $attr ) {
+    if ( isset( $attr['sizes'] ) ) {
+        $html = str_replace( $attr['sizes'], '100vw', $html );
+    }
+    return $html;
+}
+add_filter( 'get_header_image_tag', 'kappscores_header_image_tag', 10, 3 );
+
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for post thumbnails.
+ *
+ * @origin Twenty Seventeen 1.0
+ *
+ * @param array $attr       Attributes for the image markup.
+ * @param int   $attachment Image attachment ID.
+ * @param array $size       Registered image size or flat array of height and width dimensions.
+ * @return string A source size value for use in a post thumbnail 'sizes' attribute.
+ */
+function kappscores_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+
+    if ( !is_singular() ) {
+        if ( is_active_sidebar( 'sidebar-1' ) ) {
+            $attr['sizes'] = '(max-width: 900px) 90vw, 800px';
+        } else {
+            $attr['sizes'] = '(max-width: 1000px) 90vw, 1000px';
+        }
+    } else {
+        $attr['sizes'] = '100vw';
+    }
+
+    return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'kappscores_post_thumbnail_sizes_attr', 10, 3 );
+
+
+
 
 /**
  * Register widget area.
@@ -164,15 +232,15 @@ add_action( 'after_setup_theme', 'kappscores_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function kappscores_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'kappscores' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'kappscores' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Sidebar', 'kappscores' ),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__( 'Add sidebar widgets here.', 'kappscores' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
 
     register_sidebar( array(
         'name'          => esc_html__( 'Page Sidebar', 'kappscores' ),
@@ -193,6 +261,7 @@ function kappscores_widgets_init() {
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
     ) );
+
 }
 add_action( 'widgets_init', 'kappscores_widgets_init' );
 
@@ -200,26 +269,24 @@ add_action( 'widgets_init', 'kappscores_widgets_init' );
  * Enqueue scripts and styles.
  */
 function kappscores_scripts() {
-    //Enqueue Google Fonts: Source Sans Pro and PT Serif
-    wp_enqueue_style('kappscores-font', kappscores_fonts_url());
+    // Enqueue Google Fonts: Source Sans Pro and PT Serif
+    wp_enqueue_style( 'kappscores-fonts', kappscores_fonts_url() );
 
-	wp_enqueue_style( 'kappscores-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'kappscores-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'kappscores-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
-
-    wp_enqueue_script( 'kappscores-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20190211', true );
-
-
-    wp_localize_script('kappscores-navigation', 'kappscoresScreenReaderText', array(
-	    'expand' => __('Expand child menu', 'kappscores'),
-        'collapse' => __('Collapse child menu', 'kappscores'),
+    wp_enqueue_script( 'kappscores-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+    wp_localize_script( 'kappscores-navigation', 'kappscoresScreenReaderText', array(
+        'expand' => __( 'Expand child menu', 'kappscores'),
+        'collapse' => __( 'Collapse child menu', 'kappscores'),
     ));
 
-	wp_enqueue_script( 'kappscores-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+    wp_enqueue_script( 'kappscores-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20161201', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    wp_enqueue_script( 'kappscores-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'kappscores_scripts' );
 
@@ -246,7 +313,4 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
+require get_template_directory() . '/inc/jetpack.php';

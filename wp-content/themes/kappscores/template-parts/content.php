@@ -19,7 +19,7 @@
                 the_post_thumbnail('kappscores-index-img');
                 ?>
             </a>
-        </figure><!-- .featured-image index-image -->
+        </figure><!-- .featured-image full-bleed -->
     <?php } ?>
 
     <div class="post__content">

@@ -1042,7 +1042,7 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
-## Archive
+## Archives
 --------------------------------------------------------------*/
 .archive-view {
 	background-color: #eee;
@@ -1825,6 +1825,19 @@ ul.children.toggled-on,
 	color: #D54E21;
 }
 
+.pingback {
+	font-family: "Source Sans Pro", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+.pingback .comment-body {
+	padding: 1em 0;
+}
+
+.pingback a {
+	font-style: italic;
+	text-decoration: none;
+}
+
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
@@ -1837,19 +1850,66 @@ ul.children.toggled-on,
 	text-align: center;
 }
 
+.site-footer a {
+	font-weight: 700;
+	color: white;
+	text-decoration: none;
+}
+
+.site-footer a:hover, .site-footer a:focus {
+	text-decoration: underline;
+}
+
 @media screen and (min-width: 600px) {
 	.site-footer {
 		padding: 1em 2em;
 	}
 }
 
+.site-footer__wrap {
+	max-width: 1080px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 900px) {
+	.site-footer__wrap {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between;
+	}
+}
+
+.site-info {
+	margin: 1em 0 1em auto;
+	-ms-flex-item-align: center;
+	    align-self: center;
+}
+
+@media screen and (min-width: 900px) {
+	.site-info {
+		text-align: right;
+	}
+	.site-info span {
+		display: block;
+	}
+}
+
+.social-menu {
+	margin: 1em 0;
+}
+
 .social-menu ul {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -1860,10 +1920,12 @@ ul.children.toggled-on,
 	padding: .5em 1em;
 	color: white;
 	text-decoration: none;
+	opacity: .6;
 }
 
 .social-menu ul a:hover, .social-menu ul a:focus {
 	text-decoration: underline;
+	opacity: 1;
 }
 
 /*--------------------------------------------------------------
@@ -1871,6 +1933,13 @@ ul.children.toggled-on,
 --------------------------------------------------------------*/
 .widget-area {
 	margin-top: 1.5em;
+}
+
+/* Footer widgets for archive pages */
+@media screen and (min-width: 900px) {
+	.archive-view.has-sidebar .footer-widgets {
+		width: 100%;
+	}
 }
 
 .widget {

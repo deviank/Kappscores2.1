@@ -158,10 +158,6 @@ function kappscores_content_width() {
 }
 add_action( 'after_setup_theme', 'kappscores_content_width', 0 );
 
-
-
-
-
 /**
  * Register widget area.
  *
@@ -177,16 +173,6 @@ function kappscores_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-
-    register_sidebar( array(
-        'name'          => esc_html__( 'Page Sidebar', 'kappscores' ),
-        'id'            => 'sidebar-2',
-        'description'   => esc_html__( 'Add page widgets here.', 'kappscores' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
 
     register_sidebar( array(
         'name'          => esc_html__( 'Footer Widgets', 'kappscores' ),

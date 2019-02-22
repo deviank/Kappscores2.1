@@ -75,6 +75,9 @@ if ( ! function_exists( 'kappscores_setup' ) ) :
             'flex-width' => true,
         ));
 
+        /*Editor styles*/
+        add_editor_style(array('inc/editor-styles.css', kappscores_fonts_url()));
+
     }
 endif;
 add_action( 'after_setup_theme', 'kappscores_setup' );
